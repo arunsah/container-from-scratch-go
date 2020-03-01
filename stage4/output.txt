@@ -1,0 +1,396 @@
+00:00 sudo
+  853 pts/3    00:00:00 su
+  855 pts/3    00:00:00 bash
+ 1087 pts/3    00:00:00 go
+ 1125 pts/3    00:00:00 main
+ 1130 pts/3    00:00:00 bash
+21197 pts/3    00:00:00 go
+21218 pts/3    00:00:00 main
+21222 pts/3    00:00:00 exe
+21228 pts/3    00:00:00 bash
+21605 pts/3    00:00:00 ps
+root@container:/home/mario/code/prj/container-from-scratch# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build750087911/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 25553
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# ps
+  PID TTY          TIME CMD
+  851 pts/3    00:00:00 sudo
+  853 pts/3    00:00:00 su
+  855 pts/3    00:00:00 bash
+ 1087 pts/3    00:00:00 go
+ 1125 pts/3    00:00:00 main
+ 1130 pts/3    00:00:00 bash
+25594 pts/3    00:00:00 ps
+root@mario:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@mario:/home/mario/code/prj/container-from-scratch# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# exit
+exit
+mario@mario:~/code/prj/container-from-scratch$ sudo su
+[sudo] password for mario: 
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build103056650/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 25772
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# ps
+  PID TTY          TIME CMD
+25706 pts/3    00:00:00 sudo
+25737 pts/3    00:00:00 su
+25738 pts/3    00:00:00 bash
+25813 pts/3    00:00:00 ps
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build282017839/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 26263
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build882474804/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 26607
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build492343993/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 26792
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@container:/home/mario/code/prj/container-from-scratch# hostname
+container
+root@container:/home/mario/code/prj/container-from-scratch# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# ls /
+bin    etc          initrd.img.old  media  root           snap      tmp      vmlinuz.old
+boot   garlicbread  lib             mnt    ROOT_FOR_HOST  srv       usr
+cdrom  home         lib64           opt    run            swapfile  var
+dev    initrd.img   lost+found      proc   sbin           sys       vmlinuz
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build090181851/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 27508
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# ls /
+bin    etc          initrd.img.old  media  root           snap      tmp      vmlinuz.old
+boot   garlicbread  lib             mnt    ROOT_FOR_HOST  srv       usr
+cdrom  home         lib64           opt    run            swapfile  var
+dev    initrd.img   lost+found      proc   sbin           sys       vmlinuz
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build146519925/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 28700
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build010537266/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 29475
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build477773906/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 29660
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/# ls /
+bin    etc          initrd.img.old  media  root           snap      tmp      vmlinuz.old
+boot   garlicbread  lib             mnt    ROOT_FOR_HOST  srv       usr
+cdrom  home         lib64           opt    run            swapfile  var
+dev    initrd.img   lost+found      proc   sbin           sys       vmlinuz
+root@container:/# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build033827928/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 29970
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@container:/home/mario/code/prj/container-from-scratch# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build387589295/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 30159
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build217946476/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 30420
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+panic: chdir /garlicbread/: no such file or directory
+
+goroutine 1 [running]:
+main.child()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:73 +0x341
+main.main()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:22 +0x10b
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build468133080/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 30608
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+panic: chdir /garlicbread: no such file or directory
+
+goroutine 1 [running]:
+main.child()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:73 +0x341
+main.main()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:22 +0x10b
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build740380069/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 30813
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# ls /
+bin    etc          initrd.img.old  media  root           snap      tmp      vmlinuz.old
+boot   garlicbread  lib             mnt    ROOT_FOR_HOST  srv       usr
+cdrom  home         lib64           opt    run            swapfile  var
+dev    initrd.img   lost+found      proc   sbin           sys       vmlinuz
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build226983051/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 31031
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build327492886/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 31738
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# ps
+  PID TTY          TIME CMD
+25706 pts/3    00:00:00 sudo
+25737 pts/3    00:00:00 su
+25738 pts/3    00:00:00 bash
+31787 pts/3    00:00:00 ps
+root@mario:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build692834484/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 454
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@mario:/home/mario/code/prj/container-from-scratch# pwd
+/home/mario/code/prj/container-from-scratch
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build970446357/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 707
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+panic: chdir /garlicbread/container: no such file or directory
+
+goroutine 1 [running]:
+main.child()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:73 +0x341
+main.main()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:22 +0x10b
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build060447602/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 11885
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+panic: chdir /garlicbread/container: no such file or directory
+
+goroutine 1 [running]:
+main.child()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:73 +0x36d
+main.main()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:22 +0x10b
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build243781468/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 12038
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+bash-4.4# ps
+bash: ps: command not found
+bash-4.4# ls
+bash: ls: command not found
+bash-4.4# pwd
+/
+bash-4.4# ls -all
+bash: ls: command not found
+bash-4.4# hostname
+bash: hostname: command not found
+bash-4.4# exit
+exit
+panic: exit status 127
+
+goroutine 1 [running]:
+main.must(...)
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:89
+main.child()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:84 +0x355
+main.main()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:22 +0x10b
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build582350696/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 18465
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build684165295/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 18574
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/# pwd
+/
+root@container:/# pwd
+/
+root@container:/# ls
+ROOT_FOR_CONTAINER  boot  etc   lib    media  opt   root  sbin  sys  usr
+bin                 dev   home  lib64  mnt    proc  run   srv   tmp  var
+root@container:/# cd ..
+root@container:/# pwd
+/
+root@container:/# hostname
+container
+root@container:/# ps
+Error, do this: mount -t proc proc /proc
+root@container:/# mount -t proc proc /proc
+root@container:/# ps
+  PID TTY          TIME CMD
+    1 ?        00:00:00 exe
+    5 ?        00:00:00 bash
+   14 ?        00:00:00 ps
+root@container:/# nano
+bash: nano: command not found
+root@container:/# apt-get install nano
+Reading package lists... Done
+Building dependency tree... Done
+Suggested packages:
+  spell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 191 kB of archives.
+After this operation, 700 kB of additional disk space will be used.
+Err:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 nano amd64 2.5.3-2
+  Temporary failure resolving 'archive.ubuntu.com'
+E: Failed to fetch http://archive.ubuntu.com/ubuntu/pool/main/n/nano/nano_2.5.3-2_amd64.deb  Temporary failure resolving 'archive.ubuntu.com'
+
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+root@container:/# apt-get update
+Err:1 http://archive.ubuntu.com/ubuntu xenial InRelease
+  Temporary failure resolving 'archive.ubuntu.com'
+Err:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease
+  Temporary failure resolving 'archive.ubuntu.com'
+Err:3 http://archive.ubuntu.com/ubuntu xenial-security InRelease
+  Temporary failure resolving 'archive.ubuntu.com'
+Reading package lists... Done
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-updates/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-security/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+root@container:/# apt-get upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+root@container:/# apt-get install nano
+Reading package lists... Done
+Building dependency tree... Done
+Suggested packages:
+  spell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 191 kB of archives.
+After this operation, 700 kB of additional disk space will be used.
+Err:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 nano amd64 2.5.3-2
+  Temporary failure resolving 'archive.ubuntu.com'
+E: Failed to fetch http://archive.ubuntu.com/ubuntu/pool/main/n/nano/nano_2.5.3-2_amd64.deb  Temporary failure resolving 'archive.ubuntu.com'
+
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+root@container:/# 
+root@container:/# 
+root@container:/# exit
+exit
+panic: exit status 100
+
+goroutine 1 [running]:
+main.must(...)
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:89
+main.child()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:84 +0x355
+main.main()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:22 +0x10b
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# 
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build009619179/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 23114
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/# ps
+  PID TTY          TIME CMD
+    1 ?        00:00:00 exe
+    5 ?        00:00:00 bash
+   10 ?        00:00:00 ps
+root@container:/# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build564639250/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 25840
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/# hostname
+container
+root@container:/# ps
+  PID TTY          TIME CMD
+    1 ?        00:00:00 exe
+    5 ?        00:00:00 bash
+   11 ?        00:00:00 ps
+root@container:/# mount
+proc on /proc type proc (rw,relatime)
+proc on /proc type proc (rw,relatime)
+root@container:/# sleep 120
+^C
+root@container:/# exit
+exit
+panic: exit status 130
+
+goroutine 1 [running]:
+main.must(...)
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:103
+main.child()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:95 +0x3ca
+main.main()
+        /home/mario/code/prj/container-from-scratch/stage4/main.go:22 +0x10b
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage4/main.go run /bin/bash
+args main:: [/tmp/go-build552773849/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 27035
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/# mount
+proc on /proc type proc (rw,relatime)
+proc on /proc type proc (rw,relatime)
+root@container:/# mounts
+bash: mounts: command not found
+root@container:/# mount 
+proc on /proc type proc (rw,relatime)
+proc on /proc type proc (rw,relatime)
+root@container:/# exit
+exit
+root@mario:/home/mario/code/prj/container-from-scratch# 

@@ -1,0 +1,4 @@
+mario@mario:~/code/prj/container-from-scratch$ go run ./stage2/main.go run echo hello world
+Running [echo hello world] 
+hello world
+mario@mario:~/code/prj/container-from-scratch$ 

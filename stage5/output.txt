@@ -1,0 +1,47 @@
+mario@mario:~/code/prj/container-from-scratch$ sudo su
+[sudo] password for mario: 
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage5/main.go run /bin/bash
+args main:: [/tmp/go-build028647119/b001/exe/main run /bin/bash]
+Running [/bin/bash] as 6647
+args main:: [/proc/self/exe child /bin/bash]
+Running child [/bin/bash] as 1
+root@container:/# hostname
+container
+root@container:/# sleep 200
+^C
+root@container:/# :() { :|: & }; :
+[1] 13
+root@container:/# bash: fork: retry: No child processes
+bash: fork: retry: Resource temporarily unavailable
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: Resource temporarily unavailable
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: Resource temporarily unavailable
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: Resource temporarily unavailable
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: retry: No child processes
+bash: fork: Resource temporarily unavailable
+bash: fork: Resource temporarily unavailable
+bash: fork: Resource temporarily unavailable
+^C
+[1]+  Done                    : | :
+root@container:/# 

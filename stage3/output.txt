@@ -1,0 +1,21 @@
+root@mario:/home/mario/code/prj/container-from-scratch# go run ./stage3/main.go run /bin/bash
+args main:: [/tmp/go-build836715160/b001/exe/main run /bin/bash]
+Running main:: [/bin/bash]
+args main:: [/proc/self/exe child /bin/bash]
+Running child:: [/bin/bash] 
+root@container:/home/mario/code/prj/container-from-scratch# ps
+  PID TTY          TIME CMD
+  851 pts/3    00:00:00 sudo
+  853 pts/3    00:00:00 su
+  855 pts/3    00:00:00 bash
+ 1087 pts/3    00:00:00 go
+ 1125 pts/3    00:00:00 main
+ 1130 pts/3    00:00:00 bash
+15375 pts/3    00:00:00 go
+15400 pts/3    00:00:00 main
+15404 pts/3    00:00:00 exe
+15408 pts/3    00:00:00 bash
+15450 pts/3    00:00:00 ps
+root@container:/home/mario/code/prj/container-from-scratch# hostname
+container
+root@container:/home/mario/code/prj/container-from-scratch# 

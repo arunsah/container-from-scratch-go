@@ -1,0 +1,767 @@
+root@mario:/home/mario# cd /sys/fs/cgroup/
+root@mario:/sys/fs/cgroup# ls
+blkio  cpuacct      cpuset   freezer  memory   net_cls,net_prio  perf_event  rdma     unified
+cpu    cpu,cpuacct  devices  hugetlb  net_cls  net_prio          pids        systemd
+root@mario:/sys/fs/cgroup# cd memory/
+root@mario:/sys/fs/cgroup/memory# ls
+cgroup.clone_children           memory.kmem.tcp.failcnt             memory.soft_limit_in_bytes
+cgroup.event_control            memory.kmem.tcp.limit_in_bytes      memory.stat
+cgroup.procs                    memory.kmem.tcp.max_usage_in_bytes  memory.swappiness
+cgroup.sane_behavior            memory.kmem.tcp.usage_in_bytes      memory.usage_in_bytes
+docker                          memory.kmem.usage_in_bytes          memory.use_hierarchy
+memory.failcnt                  memory.limit_in_bytes               notify_on_release
+memory.force_empty              memory.max_usage_in_bytes           release_agent
+memory.kmem.failcnt             memory.move_charge_at_immigrate     system.slice
+memory.kmem.limit_in_bytes      memory.numa_stat                    tasks
+memory.kmem.max_usage_in_bytes  memory.oom_control                  user.slice
+memory.kmem.slabinfo            memory.pressure_level
+root@mario:/sys/fs/cgroup/memory# cat memory.limit_in_bytes 
+9223372036854771712
+root@mario:/sys/fs/cgroup/memory# cat user.slice/
+cat: user.slice/: Is a directory
+root@mario:/sys/fs/cgroup/memory# cd docker/
+root@mario:/sys/fs/cgroup/memory/docker# ls
+cgroup.clone_children           memory.kmem.tcp.failcnt             memory.oom_control
+cgroup.event_control            memory.kmem.tcp.limit_in_bytes      memory.pressure_level
+cgroup.procs                    memory.kmem.tcp.max_usage_in_bytes  memory.soft_limit_in_bytes
+memory.failcnt                  memory.kmem.tcp.usage_in_bytes      memory.stat
+memory.force_empty              memory.kmem.usage_in_bytes          memory.swappiness
+memory.kmem.failcnt             memory.limit_in_bytes               memory.usage_in_bytes
+memory.kmem.limit_in_bytes      memory.max_usage_in_bytes           memory.use_hierarchy
+memory.kmem.max_usage_in_bytes  memory.move_charge_at_immigrate     notify_on_release
+memory.kmem.slabinfo            memory.numa_stat                    tasks
+root@mario:/sys/fs/cgroup/memory/docker# cat tasks 
+root@mario:/sys/fs/cgroup/memory/docker# cd ../..
+root@mario:/sys/fs/cgroup# ls
+blkio  cpuacct      cpuset   freezer  memory   net_cls,net_prio  perf_event  rdma     unified
+cpu    cpu,cpuacct  devices  hugetlb  net_cls  net_prio          pids        systemd
+root@mario:/sys/fs/cgroup# cd pids/
+root@mario:/sys/fs/cgroup/pids# ls
+cgroup.clone_children  cgroup.sane_behavior  garlic             release_agent  tasks
+cgroup.procs           docker                notify_on_release  system.slice   user.slice
+root@mario:/sys/fs/cgroup/pids# cd garlic/
+root@mario:/sys/fs/cgroup/pids/garlic# ls
+cgroup.clone_children  cgroup.procs  notify_on_release  pids.current  pids.events  pids.max  tasks
+root@mario:/sys/fs/cgroup/pids/garlic# cat pids.max 
+14
+root@mario:/sys/fs/cgroup/pids/garlic# ps
+  PID TTY          TIME CMD
+ 1244 pts/0    00:00:00 sudo
+ 1246 pts/0    00:00:00 su
+ 1265 pts/0    00:00:00 bash
+ 7050 pts/0    00:00:00 ps
+10578 pts/0    00:00:00 dbus-launch
+root@mario:/sys/fs/cgroup/pids/garlic# ps -C sleep
+  PID TTY          TIME CMD
+ 7090 pts/4    00:00:00 sleep
+root@mario:/sys/fs/cgroup/pids/garlic# cat cgroup.procs 
+6651
+6655
+7090
+root@mario:/sys/fs/cgroup/pids/garlic# 
+
+
+
+
+
+=========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@mario:/home/mario# ps
+  PID TTY          TIME CMD
+ 1244 pts/0    00:00:00 sudo
+ 1246 pts/0    00:00:00 su
+ 1265 pts/0    00:00:00 bash
+ 1307 pts/0    00:00:00 su
+ 1309 pts/0    00:00:00 bash
+ 1336 pts/0    00:00:00 ps
+10578 pts/0    00:00:00 dbus-launch
+root@mario:/home/mario# hostname
+mario
+root@mario:/home/mario# exit
+exit
+root@mario:/home/mario# cd /sys/fs/cgroup/
+root@mario:/sys/fs/cgroup# ls
+blkio  cpuacct      cpuset   freezer  memory   net_cls,net_prio  perf_event  rdma     unified
+cpu    cpu,cpuacct  devices  hugetlb  net_cls  net_prio          pids        systemd
+root@mario:/sys/fs/cgroup# cd memory/
+root@mario:/sys/fs/cgroup/memory# ls
+cgroup.clone_children           memory.kmem.tcp.failcnt             memory.soft_limit_in_bytes
+cgroup.event_control            memory.kmem.tcp.limit_in_bytes      memory.stat
+cgroup.procs                    memory.kmem.tcp.max_usage_in_bytes  memory.swappiness
+cgroup.sane_behavior            memory.kmem.tcp.usage_in_bytes      memory.usage_in_bytes
+docker                          memory.kmem.usage_in_bytes          memory.use_hierarchy
+memory.failcnt                  memory.limit_in_bytes               notify_on_release
+memory.force_empty              memory.max_usage_in_bytes           release_agent
+memory.kmem.failcnt             memory.move_charge_at_immigrate     system.slice
+memory.kmem.limit_in_bytes      memory.numa_stat                    tasks
+memory.kmem.max_usage_in_bytes  memory.oom_control                  user.slice
+memory.kmem.slabinfo            memory.pressure_level
+root@mario:/sys/fs/cgroup/memory# cat memory.limit_in_bytes 
+9223372036854771712
+root@mario:/sys/fs/cgroup/memory# cat user.slice/
+cat: user.slice/: Is a directory
+root@mario:/sys/fs/cgroup/memory# cd docker/
+root@mario:/sys/fs/cgroup/memory/docker# ls
+cgroup.clone_children           memory.kmem.tcp.failcnt             memory.oom_control
+cgroup.event_control            memory.kmem.tcp.limit_in_bytes      memory.pressure_level
+cgroup.procs                    memory.kmem.tcp.max_usage_in_bytes  memory.soft_limit_in_bytes
+memory.failcnt                  memory.kmem.tcp.usage_in_bytes      memory.stat
+memory.force_empty              memory.kmem.usage_in_bytes          memory.swappiness
+memory.kmem.failcnt             memory.limit_in_bytes               memory.usage_in_bytes
+memory.kmem.limit_in_bytes      memory.max_usage_in_bytes           memory.use_hierarchy
+memory.kmem.max_usage_in_bytes  memory.move_charge_at_immigrate     notify_on_release
+memory.kmem.slabinfo            memory.numa_stat                    tasks
+root@mario:/sys/fs/cgroup/memory/docker# cat tasks 
+root@mario:/sys/fs/cgroup/memory/docker# cd ../..
+root@mario:/sys/fs/cgroup# ls
+blkio  cpuacct      cpuset   freezer  memory   net_cls,net_prio  perf_event  rdma     unified
+cpu    cpu,cpuacct  devices  hugetlb  net_cls  net_prio          pids        systemd
+root@mario:/sys/fs/cgroup# cd pids/
+root@mario:/sys/fs/cgroup/pids# ls
+cgroup.clone_children  cgroup.sane_behavior  garlic             release_agent  tasks
+cgroup.procs           docker                notify_on_release  system.slice   user.slice
+root@mario:/sys/fs/cgroup/pids# cd garlic/
+root@mario:/sys/fs/cgroup/pids/garlic# ls
+cgroup.clone_children  cgroup.procs  notify_on_release  pids.current  pids.events  pids.max  tasks
+root@mario:/sys/fs/cgroup/pids/garlic# cat pids.max 
+14
+root@mario:/sys/fs/cgroup/pids/garlic# ps
+  PID TTY          TIME CMD
+ 1244 pts/0    00:00:00 sudo
+ 1246 pts/0    00:00:00 su
+ 1265 pts/0    00:00:00 bash
+ 7050 pts/0    00:00:00 ps
+10578 pts/0    00:00:00 dbus-launch
+root@mario:/sys/fs/cgroup/pids/garlic# ps -C sleep
+  PID TTY          TIME CMD
+ 7090 pts/4    00:00:00 sleep
+root@mario:/sys/fs/cgroup/pids/garlic# cat cgroup.procs 
+6651
+6655
+7090
+root@mario:/sys/fs/cgroup/pids/garlic# 
+root@mario:/sys/fs/cgroup/pids/garlic# 
+root@mario:/sys/fs/cgroup/pids/garlic# ps
+  PID TTY          TIME CMD
+ 1244 pts/0    00:00:00 sudo
+ 1246 pts/0    00:00:00 su
+ 1265 pts/0    00:00:00 bash
+ 7861 pts/0    00:00:00 ps
+10578 pts/0    00:00:00 dbus-launch
+root@mario:/sys/fs/cgroup/pids/garlic# cat cgroup.procs 
+6651
+6655
+root@mario:/sys/fs/cgroup/pids/garlic# cat cgroup.procs 
+6651
+6655
+root@mario:/sys/fs/cgroup/pids/garlic# ps fax
+  PID TTY      STAT   TIME COMMAND
+    2 ?        S      0:00 [kthreadd]
+    3 ?        I<     0:00  \_ [rcu_gp]
+    4 ?        I<     0:00  \_ [rcu_par_gp]
+    6 ?        I<     0:00  \_ [kworker/0:0H-kb]
+    9 ?        I<     0:00  \_ [mm_percpu_wq]
+   10 ?        S      0:07  \_ [ksoftirqd/0]
+   11 ?        I      0:21  \_ [rcu_sched]
+   12 ?        S      0:00  \_ [migration/0]
+   13 ?        S      0:00  \_ [idle_inject/0]
+   14 ?        S      0:00  \_ [cpuhp/0]
+   15 ?        S      0:00  \_ [kdevtmpfs]
+   16 ?        I<     0:00  \_ [netns]
+   17 ?        S      0:00  \_ [rcu_tasks_kthre]
+   18 ?        S      0:00  \_ [kauditd]
+   19 ?        S      0:00  \_ [khungtaskd]
+   20 ?        S      0:00  \_ [oom_reaper]
+   21 ?        I<     0:00  \_ [writeback]
+   22 ?        S      0:00  \_ [kcompactd0]
+   23 ?        SN     0:00  \_ [ksmd]
+   24 ?        SN     0:00  \_ [khugepaged]
+  116 ?        I<     0:00  \_ [kintegrityd]
+  117 ?        I<     0:00  \_ [kblockd]
+  118 ?        I<     0:00  \_ [blkcg_punt_bio]
+  119 ?        I<     0:00  \_ [tpm_dev_wq]
+  120 ?        I<     0:00  \_ [ata_sff]
+  121 ?        I<     0:00  \_ [md]
+  122 ?        I<     0:00  \_ [edac-poller]
+  123 ?        I<     0:00  \_ [devfreq_wq]
+  124 ?        S      0:00  \_ [watchdogd]
+  127 ?        S      0:55  \_ [kswapd0]
+  128 ?        I<     0:00  \_ [kworker/u3:0]
+  129 ?        S      0:00  \_ [ecryptfs-kthrea]
+  132 ?        I<     0:00  \_ [kthrotld]
+  133 ?        I<     0:00  \_ [acpi_thermal_pm]
+  134 ?        S      0:00  \_ [scsi_eh_0]
+  135 ?        I<     0:00  \_ [scsi_tmf_0]
+  136 ?        S      0:00  \_ [scsi_eh_1]
+  137 ?        I<     0:00  \_ [scsi_tmf_1]
+  140 ?        I<     0:00  \_ [ipv6_addrconf]
+  151 ?        I<     0:00  \_ [kstrp]
+  170 ?        I<     0:00  \_ [charger_manager]
+  171 ?        I<     0:16  \_ [kworker/0:1H-kb]
+  211 ?        S      0:00  \_ [scsi_eh_2]
+  213 ?        I<     0:00  \_ [scsi_tmf_2]
+  235 ?        S      0:01  \_ [jbd2/sda1-8]
+  236 ?        I<     0:00  \_ [ext4-rsv-conver]
+  310 ?        S<     0:00  \_ [loop0]
+  320 ?        S<     0:00  \_ [loop1]
+  324 ?        S<     0:00  \_ [loop2]
+  328 ?        S<     0:00  \_ [loop3]
+  330 ?        S<     0:08  \_ [loop4]
+  337 ?        S<     0:00  \_ [loop5]
+  340 ?        S<     0:00  \_ [loop6]
+  350 ?        S<     0:00  \_ [loop7]
+  361 ?        S<     0:00  \_ [loop8]
+  599 ?        I<     0:00  \_ [iprt-VBoxWQueue]
+  733 ?        S      0:01  \_ [irq/18-vmwgfx]
+  734 ?        I<     0:00  \_ [ttm_swap]
+  758 ?        I<     0:00  \_ [cryptd]
+ 1245 ?        S<     0:00  \_ [loop9]
+ 1760 ?        S<     0:01  \_ [loop10]
+ 1992 ?        S<     0:00  \_ [loop11]
+ 2019 ?        S<     0:00  \_ [loop12]
+ 2053 ?        S<     0:00  \_ [loop13]
+ 2148 ?        S<     0:00  \_ [loop14]
+ 2224 ?        S<     0:00  \_ [loop15]
+ 2299 ?        S<     0:00  \_ [loop16]
+ 6030 ?        S      0:00  \_ bpfilter_umh
+29262 ?        I      0:00  \_ [kworker/u2:1-ev]
+  362 ?        I      0:00  \_ [kworker/0:2-eve]
+ 1296 ?        I      0:00  \_ [kworker/u2:0-ev]
+ 5087 ?        I      0:00  \_ [kworker/0:0-eve]
+ 6917 ?        I      0:00  \_ [kworker/0:1-cgr]
+ 7491 ?        I      0:00  \_ [kworker/u2:2-ev]
+    1 ?        Ss     0:13 /sbin/init splash
+  281 ?        S<s    0:04 /lib/systemd/systemd-journald
+  292 ?        Ss     0:19 /lib/systemd/systemd-udevd
+  396 ?        Ss     0:02 /lib/systemd/systemd-resolved
+  397 ?        Ssl    0:00 /lib/systemd/systemd-timesyncd
+  446 ?        Ss     0:00 avahi-daemon: running [mario.local]
+  458 ?        S      0:00  \_ avahi-daemon: chroot helper
+  447 ?        Ssl    0:01 /usr/sbin/rsyslogd -n
+  457 ?        Ssl    0:00 /usr/lib/accountsservice/accounts-daemon
+  466 ?        Ssl    0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+  472 ?        Ss     0:03 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd
+  505 ?        Ssl    0:01 /usr/sbin/NetworkManager --no-daemon
+22778 ?        S      0:00  \_ /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dh
+29462 ?        S      0:00  \_ /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dh
+  506 ?        Ss     0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+  507 ?        Ssl    0:00 /usr/sbin/ModemManager --filter-policy=strict
+  521 ?        Ss     0:00 /usr/sbin/acpid
+  525 ?        Ss     0:00 /usr/sbin/cron -f
+  531 ?        Ss     0:01 /lib/systemd/systemd-logind
+  533 ?        Ssl    0:00 /usr/lib/udisks2/udisksd
+  555 ?        Ssl    0:00 /usr/lib/policykit-1/polkitd --no-debug
+  569 ?        Ssl    0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --w
+  583 ?        Ssl    0:00 /usr/sbin/gdm3
+  768 ?        Sl     0:00  \_ gdm-session-worker [pam/gdm-launch-environment]
+  795 tty1     Ssl+   0:00  |   \_ /usr/lib/gdm3/gdm-x-session gnome-session --autostart /usr/share/gdm/gr
+  797 tty1     Sl+    0:00  |       \_ /usr/lib/xorg/Xorg vt1 -displayfd 3 -auth /run/user/121/gdm/Xauthor
+  903 tty1     Sl+    0:00  |       \_ /usr/lib/gnome-session/gnome-session-binary --autostart /usr/share/
+  954 tty1     Sl+    0:13  |           \_ /usr/bin/gnome-shell
+  973 tty1     Sl     0:00  |           |   \_ ibus-daemon --xim --panel disable
+  976 tty1     Sl     0:00  |           |       \_ /usr/lib/ibus/ibus-dconf
+ 1098 tty1     Sl     0:00  |           |       \_ /usr/lib/ibus/ibus-engine-simple
+ 1009 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-xsettings
+ 1014 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+ 1016 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-clipboard
+ 1019 tty1     Sl+    0:02  |           \_ /usr/lib/gnome-settings-daemon/gsd-color
+ 1020 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-datetime
+ 1022 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-housekeeping
+ 1024 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-keyboard
+ 1027 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-media-keys
+ 1029 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-mouse
+ 1030 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-power
+ 1034 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-print-notifications
+ 1036 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-rfkill
+ 1038 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+ 1041 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-sharing
+ 1044 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-smartcard
+ 1048 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-sound
+ 1052 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-wacom
+ 3235 ?        Sl     0:00  \_ gdm-session-worker [pam/gdm-password]
+ 3244 tty2     Ssl+   0:00      \_ /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=u
+ 3246 tty2     Sl+    2:29          \_ /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xautho
+ 3252 tty2     Sl+    0:00          \_ /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+ 3349 tty2     Sl+   11:35              \_ /usr/bin/gnome-shell
+ 3363 tty2     Sl     0:12              |   \_ ibus-daemon --xim --panel disable
+ 3367 tty2     Sl     0:00              |       \_ /usr/lib/ibus/ibus-dconf
+ 3621 tty2     Sl     0:03              |       \_ /usr/lib/ibus/ibus-engine-simple
+ 3438 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-power
+ 3439 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-print-notifications
+ 3441 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-rfkill
+ 3442 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+ 3444 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-sharing
+ 3452 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-xsettings
+ 3458 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-sound
+ 3463 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-smartcard
+ 3465 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-wacom
+ 3469 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-clipboard
+ 3473 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+ 3475 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-datetime
+ 3478 tty2     Sl+    0:02              \_ /usr/lib/gnome-settings-daemon/gsd-color
+ 3479 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-keyboard
+ 3482 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-housekeeping
+ 3483 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-mouse
+ 3486 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-media-keys
+ 3536 tty2     Sl+    0:01              \_ nautilus-desktop
+ 3538 tty2     Sl+    0:00              \_ /usr/lib/gnome-disk-utility/gsd-disk-utility-notify
+ 4312 tty2     Sl+    0:01              \_ update-notifier
+ 4636 tty2     Sl+    0:00              \_ /usr/lib/deja-dup/deja-dup-monitor
+  752 ?        Ssl    0:00 /usr/lib/upower/upowerd
+  777 ?        Ss     0:00 /lib/systemd/systemd --user
+  778 ?        S      0:00  \_ (sd-pam)
+  897 ?        Ss     0:00  \_ /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --sy
+  922 ?        Ssl    0:00  \_ /usr/lib/at-spi2-core/at-spi-bus-launcher
+  933 ?        S      0:00  |   \_ /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessib
+  925 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfsd
+  930 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd-fuse /run/user/121/gvfs -f -o big_writes
+  942 ?        Sl     0:00  \_ /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+  960 ?        Ssl    0:00  \_ /usr/bin/pulseaudio --daemonize=no
+  981 ?        Sl     0:00  \_ /usr/lib/ibus/ibus-portal
+  992 ?        Ssl    0:00  \_ /usr/libexec/xdg-permission-store
+23610 ?        Sl     0:00  \_ /usr/lib/dconf/dconf-service
+  962 ?        SNsl   0:00 /usr/lib/rtkit/rtkit-daemon
+  979 tty1     Sl     0:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+ 1003 ?        Ssl    0:03 /usr/lib/x86_64-linux-gnu/boltd
+ 1007 ?        Ssl    0:14 /usr/lib/packagekit/packagekitd
+ 1076 ?        Ssl    0:00 /usr/lib/colord/colord
+ 1115 ?        Ssl    0:00 /usr/bin/whoopsie -f
+ 1120 ?        Ss     0:00 /usr/sbin/kerneloops --test
+ 1134 ?        Ss     0:00 /usr/sbin/kerneloops
+ 1256 ?        Ss     0:00 /lib/systemd/systemd --user
+ 1257 ?        S      0:00  \_ (sd-pam)
+ 3210 ?        Ss     0:01  \_ /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --sy
+ 3311 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfsd
+ 3551 ?        Sl     0:00  |   \_ /usr/lib/gvfs/gvfsd-trash --spawner :1.7 /org/gtk/gvfs/exec_spaw/0
+ 4661 ?        Sl     0:00  |   \_ /usr/lib/gvfs/gvfsd-network --spawner :1.7 /org/gtk/gvfs/exec_spaw/1
+ 4682 ?        Sl     0:00  |   \_ /usr/lib/gvfs/gvfsd-dnssd --spawner :1.7 /org/gtk/gvfs/exec_spaw/3
+ 3316 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+ 3325 ?        Ssl    0:00  \_ /usr/lib/at-spi2-core/at-spi-bus-launcher
+ 3330 ?        S      0:00  |   \_ /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessib
+ 3333 ?        Sl     0:01  \_ /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+ 3372 ?        Sl     0:00  \_ /usr/lib/ibus/ibus-portal
+ 3378 ?        Ssl    0:00  \_ /usr/libexec/xdg-permission-store
+ 3386 ?        Sl     0:00  \_ /usr/lib/gnome-shell/gnome-shell-calendar-server
+ 3390 ?        Ssl    0:00  \_ /usr/lib/evolution/evolution-source-registry
+ 3399 ?        Sl     0:00  \_ /usr/lib/gnome-online-accounts/goa-daemon
+ 3409 ?        Sl     0:00  \_ /usr/lib/gnome-online-accounts/goa-identity-service
+ 3417 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+ 3421 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-afc-volume-monitor
+ 3426 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-mtp-volume-monitor
+ 3430 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-goa-volume-monitor
+ 3434 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+ 3569 ?        Ssl    0:00  \_ /usr/lib/evolution/evolution-calendar-factory
+ 3587 ?        Sl     0:00  |   \_ /usr/lib/evolution/evolution-calendar-factory-subprocess --factory all 
+ 3574 ?        Sl     0:00  \_ /usr/lib/dconf/dconf-service
+ 3598 ?        Ssl    0:00  \_ /usr/lib/evolution/evolution-addressbook-factory
+ 3607 ?        Sl     0:00  |   \_ /usr/lib/evolution/evolution-addressbook-factory-subprocess --factory a
+ 3644 ?        Ssl    0:18  \_ /usr/lib/gnome-terminal/gnome-terminal-server
+ 3764 pts/0    Ss     0:00  |   \_ bash
+ 1244 pts/0    S      0:00  |   |   \_ sudo su
+ 1246 pts/0    S      0:00  |   |       \_ su
+ 1265 pts/0    S      0:00  |   |           \_ bash
+ 7898 pts/0    R+     0:00  |   |               \_ ps fax
+14675 pts/1    Ss     0:00  |   \_ bash
+17468 pts/1    S      0:00  |       \_ sudo su
+17469 pts/1    S      0:00  |           \_ su
+17470 pts/1    S+     0:00  |               \_ bash
+ 3650 ?        SLl    0:05  \_ /usr/bin/gnome-software --gapplication-service
+10578 pts/0    S      0:00  \_ dbus-launch --autolaunch=f25a89916693487dbd46e4e8b39d7ab9 --binary-syntax -
+10579 ?        Ss     0:00  \_ /usr/bin/dbus-daemon --syslog-only --fork --print-pid 5 --print-address 7 -
+10581 ?        Sl     0:00  \_ /usr/libexec/xdg-desktop-portal
+10585 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd
+10590 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd-fuse /home/mario/.gvfs -f -o big_writes
+10598 ?        Sl     0:00  \_ /usr/libexec/xdg-document-portal
+10603 ?        Sl     0:00  \_ /usr/libexec/xdg-permission-store
+10614 ?        Sl     0:00  \_ /usr/libexec/xdg-desktop-portal-gtk
+10623 ?        Sl     0:00  \_ /usr/lib/dconf/dconf-service
+14524 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfsd-metadata
+17126 ?        Sl     0:06  \_ /usr/bin/nautilus --gapplication-service
+ 1430 ?        S<l    0:01 /usr/bin/pulseaudio --start --log-target=syslog
+ 1790 ?        Ssl    0:33 /usr/lib/snapd/snapd
+ 3240 ?        Sl     0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+ 3369 tty2     Sl     0:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+ 3504 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-printer
+ 3802 tty2     SLl+   0:48 /opt/google/chrome/chrome
+ 3808 tty2     S+     0:00  \_ cat
+ 3809 tty2     S+     0:00  \_ cat
+ 3812 tty2     S+     0:00  \_ /opt/google/chrome/chrome --type=zygote --enable-crash-reporter=d0f7c0d7-49
+ 3813 tty2     S+     0:00  |   \_ /opt/google/chrome/nacl_helper
+ 3816 tty2     S+     0:00  |   \_ /opt/google/chrome/chrome --type=zygote --enable-crash-reporter=d0f7c0d
+12492 tty2     Sl+    0:00  |       \_ /opt/google/chrome/chrome --type=renderer --disable-webrtc-apm-in-a
+12629 tty2     Sl+    2:57  |       \_ /opt/google/chrome/chrome --type=renderer --disable-webrtc-apm-in-a
+12640 tty2     Sl+    0:00  |       \_ /opt/google/chrome/chrome --type=renderer --disable-webrtc-apm-in-a
+ 3841 tty2     SLl+   0:29  \_ /opt/google/chrome/chrome --type=utility --field-trial-handle=7706652455216
+ 3862 tty2     Sl+    0:55  \_ /opt/google/chrome/chrome --type=gpu-process --field-trial-handle=770665245
+ 3936 tty2     S+     0:00      \_ /opt/google/chrome/chrome --type=broker
+ 3963 tty2     Sl+    4:02 /usr/lib/firefox/firefox -new-window
+ 4027 tty2     Sl+    0:24  \_ /usr/lib/firefox/firefox -contentproc -childID 1 -isForBrowser -prefsLen 1 
+ 4064 tty2     Sl+    0:04  \_ /usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -prefsLen 62
+ 4272 tty2     Sl+    0:11  \_ /usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -prefsLen 69
+ 5360 tty2     Sl+    0:29  \_ /usr/lib/firefox/firefox -contentproc -childID 8 -isForBrowser -prefsLen 82
+13169 tty2     Sl+    0:23  \_ /usr/lib/firefox/firefox -contentproc -childID 9 -isForBrowser -prefsLen 85
+13214 tty2     Sl+    0:25  \_ /usr/lib/firefox/firefox -contentproc -childID 10 -isForBrowser -prefsLen 8
+28569 tty2     Sl+    1:50  \_ /usr/lib/firefox/firefox -contentproc -childID 14 -isForBrowser -prefsLen 8
+28724 tty2     Sl+    0:47  \_ /usr/lib/firefox/firefox -contentproc -childID 16 -isForBrowser -prefsLen 8
+16020 tty2     Sl+    4:07  \_ /usr/lib/firefox/firefox -contentproc -childID 17 -isForBrowser -prefsLen 8
+ 4519 ?        Ssl    1:17 /snap/code/25/usr/share/code/code --force-user-env --no-sandbox --unity-launch 
+ 4521 ?        S      0:00  \_ /snap/code/25/usr/share/code/code --type=zygote --no-sandbox
+ 4558 ?        Sl     1:06  \_ /snap/code/25/usr/share/code/code --type=gpu-process --field-trial-handle=5
+ 4607 ?        Sl     0:15  \_ /snap/code/25/usr/share/code/code --type=renderer --disable-color-correct-r
+ 5225 ?        SLl    5:39  \_ /proc/self/exe --type=renderer --disable-color-correct-rendering --no-sandb
+ 5246 ?        Sl     0:50      \_ /snap/code/25/usr/share/code/code --inspect-port=0 /snap/code/25/usr/sh
+ 7048 ?        Sl     0:03      |   \_ /snap/code/25/usr/share/code/code /snap/code/25/usr/share/code/reso
+ 5255 ?        Sl     0:02      \_ /snap/code/25/usr/share/code/code /snap/code/25/usr/share/code/resource
+23350 pts/2    Ss+    0:00      \_ /bin/bash
+23384 pts/3    Ss     0:00      \_ /bin/bash
+30014 pts/3    SLl    0:00      |   \_ go run ./stage2/main.go run /bin/bash
+30035 pts/3    SLl    0:00      |       \_ /tmp/go-build603653640/b001/exe/main run /bin/bash
+30039 pts/3    S      0:00      |           \_ /bin/bash
+25706 pts/3    S      0:00      |               \_ sudo su
+25737 pts/3    S      0:00      |                   \_ su
+25738 pts/3    S+     0:00      |                       \_ bash
+28012 pts/4    Ss     0:00      \_ /bin/bash
+28052 pts/4    S      0:00          \_ sudo su
+28055 pts/4    S      0:00              \_ su
+28056 pts/4    S      0:00                  \_ bash
+ 6618 pts/4    SLl    0:00                      \_ go run ./stage5/main.go run /bin/bash
+ 6647 pts/4    SLl    0:00                          \_ /tmp/go-build028647119/b001/exe/main run /bin/bash
+ 6651 pts/4    SLl    0:00                              \_ /proc/self/exe child /bin/bash
+ 6655 pts/4    S+     0:00                                  \_ /bin/bash
+ 7756 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7757 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7758 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7759 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7760 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7761 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7762 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7763 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7764 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 5677 ?        Ssl    0:11 /usr/bin/containerd
+ 5970 ?        Ssl    0:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+21043 ?        SLl    0:03 /home/mario/go/bin/gocode -s -sock unix -addr 127.0.0.1:37373
+ 1247 ?        Ss     0:00 /lib/systemd/systemd --user
+ 1251 ?        S      0:00  \_ (sd-pam)
+15109 ?        Ss     0:00 /usr/sbin/cupsd -l
+15110 ?        Ssl    0:00 /usr/sbin/cups-browsed
+ 6363 ?        Ssl    0:00 /usr/lib/fwupd/fwupd
+root@mario:/sys/fs/cgroup/pids/garlic# cat pids.current 
+14
+root@mario:/sys/fs/cgroup/pids/garlic# cat cgroup.procs 
+6651
+6655
+root@mario:/sys/fs/cgroup/pids/garlic# cat tasks 
+6651
+6652
+6653
+6654
+6655
+root@mario:/sys/fs/cgroup/pids/garlic# ps fax
+  PID TTY      STAT   TIME COMMAND
+    2 ?        S      0:00 [kthreadd]
+    3 ?        I<     0:00  \_ [rcu_gp]
+    4 ?        I<     0:00  \_ [rcu_par_gp]
+    6 ?        I<     0:00  \_ [kworker/0:0H-kb]
+    9 ?        I<     0:00  \_ [mm_percpu_wq]
+   10 ?        S      0:07  \_ [ksoftirqd/0]
+   11 ?        I      0:21  \_ [rcu_sched]
+   12 ?        S      0:00  \_ [migration/0]
+   13 ?        S      0:00  \_ [idle_inject/0]
+   14 ?        S      0:00  \_ [cpuhp/0]
+   15 ?        S      0:00  \_ [kdevtmpfs]
+   16 ?        I<     0:00  \_ [netns]
+   17 ?        S      0:00  \_ [rcu_tasks_kthre]
+   18 ?        S      0:00  \_ [kauditd]
+   19 ?        S      0:00  \_ [khungtaskd]
+   20 ?        S      0:00  \_ [oom_reaper]
+   21 ?        I<     0:00  \_ [writeback]
+   22 ?        S      0:00  \_ [kcompactd0]
+   23 ?        SN     0:00  \_ [ksmd]
+   24 ?        SN     0:00  \_ [khugepaged]
+  116 ?        I<     0:00  \_ [kintegrityd]
+  117 ?        I<     0:00  \_ [kblockd]
+  118 ?        I<     0:00  \_ [blkcg_punt_bio]
+  119 ?        I<     0:00  \_ [tpm_dev_wq]
+  120 ?        I<     0:00  \_ [ata_sff]
+  121 ?        I<     0:00  \_ [md]
+  122 ?        I<     0:00  \_ [edac-poller]
+  123 ?        I<     0:00  \_ [devfreq_wq]
+  124 ?        S      0:00  \_ [watchdogd]
+  127 ?        S      0:55  \_ [kswapd0]
+  128 ?        I<     0:00  \_ [kworker/u3:0]
+  129 ?        S      0:00  \_ [ecryptfs-kthrea]
+  132 ?        I<     0:00  \_ [kthrotld]
+  133 ?        I<     0:00  \_ [acpi_thermal_pm]
+  134 ?        S      0:00  \_ [scsi_eh_0]
+  135 ?        I<     0:00  \_ [scsi_tmf_0]
+  136 ?        S      0:00  \_ [scsi_eh_1]
+  137 ?        I<     0:00  \_ [scsi_tmf_1]
+  140 ?        I<     0:00  \_ [ipv6_addrconf]
+  151 ?        I<     0:00  \_ [kstrp]
+  170 ?        I<     0:00  \_ [charger_manager]
+  171 ?        I<     0:16  \_ [kworker/0:1H-kb]
+  211 ?        S      0:00  \_ [scsi_eh_2]
+  213 ?        I<     0:00  \_ [scsi_tmf_2]
+  235 ?        S      0:01  \_ [jbd2/sda1-8]
+  236 ?        I<     0:00  \_ [ext4-rsv-conver]
+  310 ?        S<     0:00  \_ [loop0]
+  320 ?        S<     0:00  \_ [loop1]
+  324 ?        S<     0:00  \_ [loop2]
+  328 ?        S<     0:00  \_ [loop3]
+  330 ?        S<     0:08  \_ [loop4]
+  337 ?        S<     0:00  \_ [loop5]
+  340 ?        S<     0:00  \_ [loop6]
+  350 ?        S<     0:00  \_ [loop7]
+  361 ?        S<     0:00  \_ [loop8]
+  599 ?        I<     0:00  \_ [iprt-VBoxWQueue]
+  733 ?        S      0:01  \_ [irq/18-vmwgfx]
+  734 ?        I<     0:00  \_ [ttm_swap]
+  758 ?        I<     0:00  \_ [cryptd]
+ 1245 ?        S<     0:00  \_ [loop9]
+ 1760 ?        S<     0:01  \_ [loop10]
+ 1992 ?        S<     0:00  \_ [loop11]
+ 2019 ?        S<     0:00  \_ [loop12]
+ 2053 ?        S<     0:00  \_ [loop13]
+ 2148 ?        S<     0:00  \_ [loop14]
+ 2224 ?        S<     0:00  \_ [loop15]
+ 2299 ?        S<     0:00  \_ [loop16]
+ 6030 ?        S      0:00  \_ bpfilter_umh
+29262 ?        I      0:00  \_ [kworker/u2:1-ev]
+ 1296 ?        I      0:00  \_ [kworker/u2:0-ev]
+ 5087 ?        I      0:00  \_ [kworker/0:0-eve]
+ 6917 ?        I      0:00  \_ [kworker/0:1-cgr]
+ 7491 ?        I      0:00  \_ [kworker/u2:2-ev]
+ 8025 ?        I      0:00  \_ [kworker/0:2-eve]
+    1 ?        Ss     0:13 /sbin/init splash
+  281 ?        S<s    0:04 /lib/systemd/systemd-journald
+  292 ?        Ss     0:19 /lib/systemd/systemd-udevd
+  396 ?        Ss     0:02 /lib/systemd/systemd-resolved
+  397 ?        Ssl    0:00 /lib/systemd/systemd-timesyncd
+  446 ?        Ss     0:00 avahi-daemon: running [mario.local]
+  458 ?        S      0:00  \_ avahi-daemon: chroot helper
+  447 ?        Ssl    0:01 /usr/sbin/rsyslogd -n
+  457 ?        Ssl    0:00 /usr/lib/accountsservice/accounts-daemon
+  466 ?        Ssl    0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+  472 ?        Ss     0:03 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd
+  505 ?        Ssl    0:01 /usr/sbin/NetworkManager --no-daemon
+22778 ?        S      0:00  \_ /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dh
+29462 ?        S      0:00  \_ /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dh
+  506 ?        Ss     0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+  507 ?        Ssl    0:00 /usr/sbin/ModemManager --filter-policy=strict
+  521 ?        Ss     0:00 /usr/sbin/acpid
+  525 ?        Ss     0:00 /usr/sbin/cron -f
+  531 ?        Ss     0:01 /lib/systemd/systemd-logind
+  533 ?        Ssl    0:00 /usr/lib/udisks2/udisksd
+  555 ?        Ssl    0:00 /usr/lib/policykit-1/polkitd --no-debug
+  569 ?        Ssl    0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --w
+  583 ?        Ssl    0:00 /usr/sbin/gdm3
+  768 ?        Sl     0:00  \_ gdm-session-worker [pam/gdm-launch-environment]
+  795 tty1     Ssl+   0:00  |   \_ /usr/lib/gdm3/gdm-x-session gnome-session --autostart /usr/share/gdm/gr
+  797 tty1     Sl+    0:00  |       \_ /usr/lib/xorg/Xorg vt1 -displayfd 3 -auth /run/user/121/gdm/Xauthor
+  903 tty1     Sl+    0:00  |       \_ /usr/lib/gnome-session/gnome-session-binary --autostart /usr/share/
+  954 tty1     Sl+    0:13  |           \_ /usr/bin/gnome-shell
+  973 tty1     Sl     0:00  |           |   \_ ibus-daemon --xim --panel disable
+  976 tty1     Sl     0:00  |           |       \_ /usr/lib/ibus/ibus-dconf
+ 1098 tty1     Sl     0:00  |           |       \_ /usr/lib/ibus/ibus-engine-simple
+ 1009 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-xsettings
+ 1014 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+ 1016 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-clipboard
+ 1019 tty1     Sl+    0:02  |           \_ /usr/lib/gnome-settings-daemon/gsd-color
+ 1020 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-datetime
+ 1022 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-housekeeping
+ 1024 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-keyboard
+ 1027 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-media-keys
+ 1029 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-mouse
+ 1030 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-power
+ 1034 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-print-notifications
+ 1036 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-rfkill
+ 1038 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+ 1041 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-sharing
+ 1044 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-smartcard
+ 1048 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-sound
+ 1052 tty1     Sl+    0:00  |           \_ /usr/lib/gnome-settings-daemon/gsd-wacom
+ 3235 ?        Sl     0:00  \_ gdm-session-worker [pam/gdm-password]
+ 3244 tty2     Ssl+   0:00      \_ /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=u
+ 3246 tty2     Sl+    2:30          \_ /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xautho
+ 3252 tty2     Sl+    0:00          \_ /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+ 3349 tty2     Sl+   11:36              \_ /usr/bin/gnome-shell
+ 3363 tty2     Sl     0:12              |   \_ ibus-daemon --xim --panel disable
+ 3367 tty2     Sl     0:00              |       \_ /usr/lib/ibus/ibus-dconf
+ 3621 tty2     Sl     0:03              |       \_ /usr/lib/ibus/ibus-engine-simple
+ 3438 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-power
+ 3439 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-print-notifications
+ 3441 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-rfkill
+ 3442 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+ 3444 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-sharing
+ 3452 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-xsettings
+ 3458 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-sound
+ 3463 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-smartcard
+ 3465 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-wacom
+ 3469 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-clipboard
+ 3473 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+ 3475 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-datetime
+ 3478 tty2     Sl+    0:02              \_ /usr/lib/gnome-settings-daemon/gsd-color
+ 3479 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-keyboard
+ 3482 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-housekeeping
+ 3483 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-mouse
+ 3486 tty2     Sl+    0:00              \_ /usr/lib/gnome-settings-daemon/gsd-media-keys
+ 3536 tty2     Sl+    0:01              \_ nautilus-desktop
+ 3538 tty2     Sl+    0:00              \_ /usr/lib/gnome-disk-utility/gsd-disk-utility-notify
+ 4312 tty2     Sl+    0:01              \_ update-notifier
+ 4636 tty2     Sl+    0:00              \_ /usr/lib/deja-dup/deja-dup-monitor
+  752 ?        Ssl    0:00 /usr/lib/upower/upowerd
+  777 ?        Ss     0:00 /lib/systemd/systemd --user
+  778 ?        S      0:00  \_ (sd-pam)
+  897 ?        Ss     0:00  \_ /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --sy
+  922 ?        Ssl    0:00  \_ /usr/lib/at-spi2-core/at-spi-bus-launcher
+  933 ?        S      0:00  |   \_ /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessib
+  925 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfsd
+  930 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd-fuse /run/user/121/gvfs -f -o big_writes
+  942 ?        Sl     0:00  \_ /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+  960 ?        Ssl    0:00  \_ /usr/bin/pulseaudio --daemonize=no
+  981 ?        Sl     0:00  \_ /usr/lib/ibus/ibus-portal
+  992 ?        Ssl    0:00  \_ /usr/libexec/xdg-permission-store
+23610 ?        Sl     0:00  \_ /usr/lib/dconf/dconf-service
+  962 ?        SNsl   0:00 /usr/lib/rtkit/rtkit-daemon
+  979 tty1     Sl     0:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+ 1003 ?        Ssl    0:03 /usr/lib/x86_64-linux-gnu/boltd
+ 1007 ?        Ssl    0:14 /usr/lib/packagekit/packagekitd
+ 1076 ?        Ssl    0:00 /usr/lib/colord/colord
+ 1115 ?        Ssl    0:00 /usr/bin/whoopsie -f
+ 1120 ?        Ss     0:00 /usr/sbin/kerneloops --test
+ 1134 ?        Ss     0:00 /usr/sbin/kerneloops
+ 1256 ?        Ss     0:00 /lib/systemd/systemd --user
+ 1257 ?        S      0:00  \_ (sd-pam)
+ 3210 ?        Ss     0:01  \_ /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --sy
+ 3311 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfsd
+ 3551 ?        Sl     0:00  |   \_ /usr/lib/gvfs/gvfsd-trash --spawner :1.7 /org/gtk/gvfs/exec_spaw/0
+ 4661 ?        Sl     0:00  |   \_ /usr/lib/gvfs/gvfsd-network --spawner :1.7 /org/gtk/gvfs/exec_spaw/1
+ 4682 ?        Sl     0:00  |   \_ /usr/lib/gvfs/gvfsd-dnssd --spawner :1.7 /org/gtk/gvfs/exec_spaw/3
+ 3316 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+ 3325 ?        Ssl    0:00  \_ /usr/lib/at-spi2-core/at-spi-bus-launcher
+ 3330 ?        S      0:00  |   \_ /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessib
+ 3333 ?        Sl     0:01  \_ /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+ 3372 ?        Sl     0:00  \_ /usr/lib/ibus/ibus-portal
+ 3378 ?        Ssl    0:00  \_ /usr/libexec/xdg-permission-store
+ 3386 ?        Sl     0:00  \_ /usr/lib/gnome-shell/gnome-shell-calendar-server
+ 3390 ?        Ssl    0:00  \_ /usr/lib/evolution/evolution-source-registry
+ 3399 ?        Sl     0:00  \_ /usr/lib/gnome-online-accounts/goa-daemon
+ 3409 ?        Sl     0:00  \_ /usr/lib/gnome-online-accounts/goa-identity-service
+ 3417 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+ 3421 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-afc-volume-monitor
+ 3426 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-mtp-volume-monitor
+ 3430 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-goa-volume-monitor
+ 3434 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+ 3569 ?        Ssl    0:00  \_ /usr/lib/evolution/evolution-calendar-factory
+ 3587 ?        Sl     0:00  |   \_ /usr/lib/evolution/evolution-calendar-factory-subprocess --factory all 
+ 3574 ?        Sl     0:00  \_ /usr/lib/dconf/dconf-service
+ 3598 ?        Ssl    0:00  \_ /usr/lib/evolution/evolution-addressbook-factory
+ 3607 ?        Sl     0:00  |   \_ /usr/lib/evolution/evolution-addressbook-factory-subprocess --factory a
+ 3644 ?        Ssl    0:19  \_ /usr/lib/gnome-terminal/gnome-terminal-server
+ 3764 pts/0    Ss     0:00  |   \_ bash
+ 1244 pts/0    S      0:00  |   |   \_ sudo su
+ 1246 pts/0    S      0:00  |   |       \_ su
+ 1265 pts/0    S      0:00  |   |           \_ bash
+ 8187 pts/0    R+     0:00  |   |               \_ ps fax
+14675 pts/1    Ss     0:00  |   \_ bash
+17468 pts/1    S      0:00  |       \_ sudo su
+17469 pts/1    S      0:00  |           \_ su
+17470 pts/1    S+     0:00  |               \_ bash
+ 3650 ?        SLl    0:05  \_ /usr/bin/gnome-software --gapplication-service
+10578 pts/0    S      0:00  \_ dbus-launch --autolaunch=f25a89916693487dbd46e4e8b39d7ab9 --binary-syntax -
+10579 ?        Ss     0:00  \_ /usr/bin/dbus-daemon --syslog-only --fork --print-pid 5 --print-address 7 -
+10581 ?        Sl     0:00  \_ /usr/libexec/xdg-desktop-portal
+10585 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd
+10590 ?        Sl     0:00  \_ /usr/lib/gvfs/gvfsd-fuse /home/mario/.gvfs -f -o big_writes
+10598 ?        Sl     0:00  \_ /usr/libexec/xdg-document-portal
+10603 ?        Sl     0:00  \_ /usr/libexec/xdg-permission-store
+10614 ?        Sl     0:00  \_ /usr/libexec/xdg-desktop-portal-gtk
+10623 ?        Sl     0:00  \_ /usr/lib/dconf/dconf-service
+14524 ?        Ssl    0:00  \_ /usr/lib/gvfs/gvfsd-metadata
+17126 ?        Sl     0:06  \_ /usr/bin/nautilus --gapplication-service
+ 1430 ?        S<l    0:01 /usr/bin/pulseaudio --start --log-target=syslog
+ 1790 ?        Ssl    0:33 /usr/lib/snapd/snapd
+ 3240 ?        Sl     0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+ 3369 tty2     Sl     0:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+ 3504 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-printer
+ 3802 tty2     SLl+   0:49 /opt/google/chrome/chrome
+ 3808 tty2     S+     0:00  \_ cat
+ 3809 tty2     S+     0:00  \_ cat
+ 3812 tty2     S+     0:00  \_ /opt/google/chrome/chrome --type=zygote --enable-crash-reporter=d0f7c0d7-49
+ 3813 tty2     S+     0:00  |   \_ /opt/google/chrome/nacl_helper
+ 3816 tty2     S+     0:00  |   \_ /opt/google/chrome/chrome --type=zygote --enable-crash-reporter=d0f7c0d
+12492 tty2     Sl+    0:00  |       \_ /opt/google/chrome/chrome --type=renderer --disable-webrtc-apm-in-a
+12629 tty2     Sl+    3:02  |       \_ /opt/google/chrome/chrome --type=renderer --disable-webrtc-apm-in-a
+12640 tty2     Sl+    0:00  |       \_ /opt/google/chrome/chrome --type=renderer --disable-webrtc-apm-in-a
+ 3841 tty2     SLl+   0:29  \_ /opt/google/chrome/chrome --type=utility --field-trial-handle=7706652455216
+ 3862 tty2     Sl+    0:56  \_ /opt/google/chrome/chrome --type=gpu-process --field-trial-handle=770665245
+ 3936 tty2     S+     0:00      \_ /opt/google/chrome/chrome --type=broker
+ 3963 tty2     Sl+    4:03 /usr/lib/firefox/firefox -new-window
+ 4027 tty2     Sl+    0:24  \_ /usr/lib/firefox/firefox -contentproc -childID 1 -isForBrowser -prefsLen 1 
+ 4064 tty2     Sl+    0:04  \_ /usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -prefsLen 62
+ 4272 tty2     Sl+    0:11  \_ /usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -prefsLen 69
+ 5360 tty2     Sl+    0:29  \_ /usr/lib/firefox/firefox -contentproc -childID 8 -isForBrowser -prefsLen 82
+13169 tty2     Sl+    0:23  \_ /usr/lib/firefox/firefox -contentproc -childID 9 -isForBrowser -prefsLen 85
+13214 tty2     Sl+    0:25  \_ /usr/lib/firefox/firefox -contentproc -childID 10 -isForBrowser -prefsLen 8
+28569 tty2     Sl+    1:50  \_ /usr/lib/firefox/firefox -contentproc -childID 14 -isForBrowser -prefsLen 8
+28724 tty2     Sl+    0:47  \_ /usr/lib/firefox/firefox -contentproc -childID 16 -isForBrowser -prefsLen 8
+16020 tty2     Sl+    4:08  \_ /usr/lib/firefox/firefox -contentproc -childID 17 -isForBrowser -prefsLen 8
+ 4519 ?        Ssl    1:17 /snap/code/25/usr/share/code/code --force-user-env --no-sandbox --unity-launch 
+ 4521 ?        S      0:00  \_ /snap/code/25/usr/share/code/code --type=zygote --no-sandbox
+ 4558 ?        Sl     1:06  \_ /snap/code/25/usr/share/code/code --type=gpu-process --field-trial-handle=5
+ 4607 ?        Sl     0:15  \_ /snap/code/25/usr/share/code/code --type=renderer --disable-color-correct-r
+ 5225 ?        SLl    5:39  \_ /proc/self/exe --type=renderer --disable-color-correct-rendering --no-sandb
+ 5246 ?        Sl     0:50      \_ /snap/code/25/usr/share/code/code --inspect-port=0 /snap/code/25/usr/sh
+ 7048 ?        Sl     0:03      |   \_ /snap/code/25/usr/share/code/code /snap/code/25/usr/share/code/reso
+ 5255 ?        Sl     0:02      \_ /snap/code/25/usr/share/code/code /snap/code/25/usr/share/code/resource
+23350 pts/2    Ss+    0:00      \_ /bin/bash
+23384 pts/3    Ss     0:00      \_ /bin/bash
+30014 pts/3    SLl    0:00      |   \_ go run ./stage2/main.go run /bin/bash
+30035 pts/3    SLl    0:00      |       \_ /tmp/go-build603653640/b001/exe/main run /bin/bash
+30039 pts/3    S      0:00      |           \_ /bin/bash
+25706 pts/3    S      0:00      |               \_ sudo su
+25737 pts/3    S      0:00      |                   \_ su
+25738 pts/3    S+     0:00      |                       \_ bash
+28012 pts/4    Ss     0:00      \_ /bin/bash
+28052 pts/4    S      0:00          \_ sudo su
+28055 pts/4    S      0:00              \_ su
+28056 pts/4    S      0:00                  \_ bash
+ 6618 pts/4    SLl    0:00                      \_ go run ./stage5/main.go run /bin/bash
+ 6647 pts/4    SLl    0:00                          \_ /tmp/go-build028647119/b001/exe/main run /bin/bash
+ 6651 pts/4    SLl    0:00                              \_ /proc/self/exe child /bin/bash
+ 6655 pts/4    S+     0:00                                  \_ /bin/bash
+ 7756 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7757 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7758 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7759 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7760 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7761 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7762 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7763 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 7764 pts/4    Z      0:00                                  \_ [bash] <defunct>
+ 5677 ?        Ssl    0:11 /usr/bin/containerd
+ 5970 ?        Ssl    0:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+21043 ?        SLl    0:03 /home/mario/go/bin/gocode -s -sock unix -addr 127.0.0.1:37373
+ 1247 ?        Ss     0:00 /lib/systemd/systemd --user
+ 1251 ?        S      0:00  \_ (sd-pam)
+15109 ?        Ss     0:00 /usr/sbin/cupsd -l
+15110 ?        Ssl    0:00 /usr/sbin/cups-browsed
+ 6363 ?        Ssl    0:00 /usr/lib/fwupd/fwupd
+root@mario:/sys/fs/cgroup/pids/garlic# 
+
+
